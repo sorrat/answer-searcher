@@ -1,4 +1,10 @@
 import React from 'react';
+import Dropdown from 'react-dropdown';
+
+const sites = [
+  {value: 'stackoverflow', label: 'stackoverflow'},
+  {value: 'serverfault', label: 'serverfault'},
+]
 
 class SearchForm extends React.Component {
   constructor(props) {
@@ -8,6 +14,7 @@ class SearchForm extends React.Component {
 
   render() {
     return (
+      <div>
       <form className="flex-row" onSubmit={this.onSubmit}>
         <input
           ref="searchInput"
@@ -15,11 +22,17 @@ class SearchForm extends React.Component {
           type="text"
           placeholder="Enter your question"
         />
-        <button
-          className="flex-1">
+        <Dropdown
+          name="site"
+          value="stackoverflow"
+          placeholder="Select an option"
+          options={sites}
+        />
+        <button className="flex-1">
           Search!
         </button>
       </form>
+      </div>
     );
   }
 

@@ -14,6 +14,7 @@ BUILD = path.join(__dirname, "build")
 
 const common = {
   entry: [
+    "whatwg-fetch",
     "webpack-dev-server/client?http://localhost:3000",
     "webpack/hot/only-dev-server",
     "babel-regenerator-runtime",

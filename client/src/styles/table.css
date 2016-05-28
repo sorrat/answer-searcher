@@ -1,0 +1,57 @@
+/* http://www.w3schools.com/css/css_table.asp */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  white-space: nowrap;
+  margin-top: 15px;
+}
+
+tr {
+  border: 1px solid #ddd;
+}
+
+tbody tr {
+  cursor: pointer;
+
+  &:hover {background-color: #f5f5f5;}
+}
+
+tr.answered {
+  background-color: #d3f8d3;
+
+  &:hover {background-color: #bdf5bd};
+}
+
+thead {
+  border: 1px solid #ddd;
+}
+
+th {
+  text-transform: capitalize;
+
+}
+table.empty th {display: none}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* layout */
+
+.date {
+  width: 20%;
+}
+
+.title {
+  width: 60%;
+}
+
+.owner {
+  width: 20%;
+}

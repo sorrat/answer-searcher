@@ -1,10 +1,11 @@
 /* layout */
+
 .flex-row {
   display: flex;
 }
 
 .flex-1 {
-  flex: 1;
+  flex: 0 1 auto;
 }
 
 .flex-9 {
@@ -27,18 +28,18 @@ button {
   border: 1px solid #bbb;
   cursor: pointer;
   margin-left: 5px;
-  box-shadow: 0 1px 0 #bbb;
+  box-shadow: 0 0 1px #bbb;
 }
 
-button:focus,
 button:hover {
-  color: #333;
-  border-color: #888;
-  outline: 0;
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 1px #9ecaed;
 }
 
 button:active {
   box-shadow: 0 0;
+  border-color: #bbb;
 }
 
 /* input */
@@ -57,8 +58,9 @@ input[type="text"] {
   transition: box-shadow 0.3s, border 0.3s;
 }
 
+input[type="text"]:hover,
 input[type="text"]:focus {
   outline: none;
   border-color: #9ecaed;
-  box-shadow: 0 0 10px #9ecaed;
+  box-shadow: 0 0 1px #9ecaed;
 }
