@@ -1,0 +1,11 @@
+$blue: #9ecaed;
+$grey: #bbb;
+
+$border-grey: 1px solid $grey;
+$border-radius: 4px;
+
+$margin: 5px;
+$padding-h: 10px;
+$padding-v: 7px;
+
+$shadow-blue: 0 0 1px $blue;

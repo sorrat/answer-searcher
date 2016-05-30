@@ -1,21 +1,24 @@
-import React from 'react';
+import React from "react";
 
-import {QuestionsTable} from './QuestionsTable.jsx'
-import {SearchForm} from './SearchForm.jsx'
-import {checkStatus, parseJson, log} from '../utils'
+import {QuestionsTable} from "./QuestionsTable.jsx"
+import {SearchForm} from "./SearchForm.jsx"
+import {checkStatus, parseJson, log} from "../utils"
 
 
 export class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {isPending: false};
     this.searchQuestions = this.searchQuestions.bind(this);
   }
 
   render() {
     return (
       <div>
-        <SearchForm onSubmit={this.searchQuestions} />
+        <SearchForm
+          isPending={this.state.isPending}
+          onSubmit={this.searchQuestions}
+        />
         {this.questionsTable()}
       </div>
     );
@@ -23,21 +26,30 @@ export class App extends React.Component {
 
   questionsTable() {
     if (this.state.questions === undefined)
-      return '';
+      return "";
     else
       return <QuestionsTable questions={this.state.questions} />;
   }
 
-  searchQuestions(question) {
+  searchQuestions(question, site) {
     question = question.trim();
-    if (!question)
+    if (!question || this.state.isPending)
       return
 
-    let url = "/sample-questions.json";
+    const url = (process.env.NODE_ENV == "production") ?
+      `/similar?question=${encodeURIComponent(question)}&site=${site}` :
+      "/sample-questions.json";
+
+    this.setState({isPending: true});
     fetch(url)
       .then(checkStatus)
       .then(parseJson)
-      .then(parsed => this.setState({questions: parsed}))
-      .catch(log);
+      .then(parsed => {
+        this.setState({isPending: false, questions: parsed});
+      })
+      .catch(error => {
+        this.setState({isPending: false});
+        console.log(error);
+      });
   }
 }

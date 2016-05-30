@@ -14,3 +14,7 @@ export function parseJson(response) {
 export function log(object) {
   console.log(object);
 }
+
+export function timestampToDate(timestamp) {
+  return new Date(parseInt(timestamp) * 1000);
+}

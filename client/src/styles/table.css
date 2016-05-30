@@ -1,5 +1,3 @@
-/* http://www.w3schools.com/css/css_table.asp */
-
 table {
   border-collapse: collapse;
   width: 100%;
@@ -40,18 +38,4 @@ td {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-}
-
-/* layout */
-
-.date {
-  width: 20%;
-}
-
-.title {
-  width: 60%;
-}
-
-.owner {
-  width: 20%;
 }
